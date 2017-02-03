@@ -14,6 +14,7 @@
 <script>
 export default {
   name: 'add-feed-form',
+  props: ['onAdd'],
 
   data() {
     return {
@@ -28,8 +29,10 @@ export default {
       };
 
       fetch(`http://localhost:3001/feeds/${this.idToAdd}`, params)
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+        .then(() => {
+          this.idToAdd = '';
+          this.onAdd();
+        });
     },
   },
 };
