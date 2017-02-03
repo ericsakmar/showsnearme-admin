@@ -1,5 +1,5 @@
 <template>
-  <div class="feed-list">
+  <section class="feed-list">
 
     <h1>Feeds</h1>
 
@@ -18,17 +18,13 @@
       </tbody>
     </table>
 
-  </div>
+  </section>
 </template>
 
 <script>
 export default {
   name: 'feed-list',
   props: ['feeds'],
-  data() {
-    return {
-    };
-  },
 };
 </script>
 
