@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <feed-list></feed-list>
+    <feed-list :feeds="this.feeds"></feed-list>
   </div>
 </template>
 
@@ -10,19 +9,32 @@ import FeedList from './components/FeedList';
 
 export default {
   name: 'app',
+
   components: {
     FeedList,
+  },
+
+  data() {
+    return {
+      feeds: [],
+    };
+  },
+
+  created() {
+    this.fetchFeeds();
+  },
+
+  methods: {
+    fetchFeeds() {
+      fetch('http://localhost:3001/feeds')
+        .then(res => res.json())
+        .then(feeds => (this.feeds = feeds));
+    },
   },
 };
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

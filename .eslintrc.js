@@ -18,6 +18,9 @@ module.exports = {
     }
   },
   // add your custom rules here
+  'globals': {
+    'fetch': false
+  },
   'rules': {
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {
@@ -25,6 +28,6 @@ module.exports = {
       'vue': 'never'
     }],
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
   }
 }
