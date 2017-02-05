@@ -28,7 +28,7 @@ export default {
         method: 'POST',
       };
 
-      fetch(`http://localhost:3001/feeds/${this.idToAdd}`, params)
+      fetch(`proxy/feeds/${this.idToAdd}`, params)
         .then(() => {
           this.idToAdd = '';
           this.onAdd();

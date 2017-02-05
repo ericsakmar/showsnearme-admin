@@ -29,7 +29,7 @@ export default {
 
   methods: {
     fetchFeeds() {
-      fetch('http://localhost:3001/feeds')
+      fetch('proxy/feeds')
         .then(res => res.json())
         .then(feeds => (this.feeds = feeds));
     },

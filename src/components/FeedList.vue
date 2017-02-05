@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     importFeed(id) {
-      fetch(`http://localhost:3001/import/${id}`)
+      fetch(`proxy/import/${id}`)
         .then(res => res.json())
         .then(res => this.showMessage(`Added ${res.added} shows`));
     },
