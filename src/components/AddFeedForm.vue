@@ -28,7 +28,7 @@ export default {
         method: 'POST',
       };
 
-      fetch(`proxy/feeds/${this.idToAdd}`, params)
+      fetch(`${process.env.API}/feeds/${this.idToAdd}`, params)
         .then(() => {
           this.idToAdd = '';
           this.onAdd();
