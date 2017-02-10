@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     importFeed(id) {
-      fetch(`proxy/import/${id}`)
+      fetch(`${process.env.API}/import/${id}`)
         .then(res => res.json())
         .then(res => this.showMessage(`Added ${res.added} shows`));
     },

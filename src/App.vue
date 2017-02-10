@@ -29,7 +29,7 @@ export default {
 
   methods: {
     fetchFeeds() {
-      fetch('proxy/feeds')
+      fetch(`${process.env.API}/feeds`)
         .then(res => res.json())
         .then(feeds => (this.feeds = feeds));
     },
