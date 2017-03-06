@@ -82,13 +82,4 @@ th {
 .number {
   text-align: right;
 }
-button {
-  background-color: #0074D9;
-  border: none;
-  color: #fff;
-  border-radius: 0.2em;
-}
-button.danger {
-  background-color: #FF4136;
-}
 </style>

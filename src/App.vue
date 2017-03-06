@@ -5,6 +5,11 @@
       :feeds="this.feeds"
       :onDelete="fetchFeeds"
       :onImport="fetchFeeds"></feed-list>
+
+    <section>
+      <h1>Import</h1>
+      <button @click.prevent="megaImport">Mega Import!</button>
+    </section>
   </div>
 </template>
 
@@ -31,16 +36,31 @@ export default {
   },
 
   methods: {
+
     fetchFeeds() {
       fetch(`${process.env.API}/feeds`)
         .then(res => res.json())
         .then(feeds => (this.feeds = feeds));
     },
+
+    megaImport() {
+      fetch(`${process.env.API}/mega_import`, { method: 'POST' })
+        .then(res => res.json())
+        .then(count => console.log(count));
+    },
+
   },
 };
 </script>
 
 <style>
-#app {
+button {
+  background-color: #0074D9;
+  border: none;
+  color: #fff;
+  border-radius: 0.2em;
+}
+button.danger {
+  background-color: #FF4136;
 }
 </style>
