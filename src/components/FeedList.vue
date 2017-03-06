@@ -10,7 +10,7 @@
         <tr>
           <th>Name</th>
           <th>Last Import</th>
-          <th>Count</th>
+          <th class="number">Count</th>
           <th></th>
           <th></th>
         </tr>
@@ -19,9 +19,9 @@
         <tr v-for="feed in feeds">
           <td>{{feed.name}}</td>
           <td>{{feed.lastImport && formatDate(feed.lastImport.date)}}</td>
-          <td>{{feed.lastImport && feed.lastImport.count}}</td>
+          <td class="number">{{feed.lastImport && feed.lastImport.count}}</td>
           <th><button @click.prevent="importFeed(feed.remoteId)">Import</button></th>
-          <th><button @click.prevent="deleteFeed(feed._id)">Delete</button></th>
+          <th><button @click.prevent="deleteFeed(feed._id)" class="danger">Delete</button></th>
         </tr>
       </tbody>
     </table>
@@ -73,4 +73,22 @@ export default {
 </script>
 
 <style scoped>
+tr:hover {
+  background-color: #ffd;
+}
+th {
+  text-align: left;
+}
+.number {
+  text-align: right;
+}
+button {
+  background-color: #0074D9;
+  border: none;
+  color: #fff;
+  border-radius: 0.2em;
+}
+button.danger {
+  background-color: #FF4136;
+}
 </style>
