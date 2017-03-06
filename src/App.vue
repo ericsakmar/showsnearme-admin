@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <add-feed-form :onAdd="fetchFeeds"></add-feed-form>
-    <feed-list :feeds="this.feeds"></feed-list>
+    <feed-list 
+      :feeds="this.feeds"
+      :onDelete="fetchFeeds"></feed-list>
   </div>
 </template>
 

@@ -11,6 +11,7 @@
           <th>Name</th>
           <th>ID</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -18,6 +19,7 @@
           <td>{{feed.name}}</td>
           <td>{{feed.remoteId}}</td>
           <th><button @click.prevent="importFeed(feed.remoteId)">Import</button></th>
+          <th><button @click.prevent="deleteFeed(feed._id)">Delete</button></th>
         </tr>
       </tbody>
     </table>
@@ -28,22 +30,36 @@
 <script>
 export default {
   name: 'feed-list',
-  props: ['feeds'],
+  props: [
+    'feeds',
+    'onDelete',
+  ],
+
   data() {
     return {
       message: '',
     };
   },
+
   methods: {
+
     importFeed(id) {
       fetch(`${process.env.API}/import/${id}`)
         .then(res => res.json())
         .then(res => this.showMessage(`Added ${res.added} shows`));
     },
+
+    deleteFeed(id) {
+      const params = { method: 'DELETE' };
+      fetch(`${process.env.API}/feeds/${id}`, params)
+        .then(() => this.onDelete());
+    },
+
     showMessage(message) {
       this.message = message;
       setTimeout(() => (this.message = ''), 5000);
     },
+
   },
 };
 </script>
