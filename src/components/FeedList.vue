@@ -18,7 +18,7 @@
       <tbody>
         <tr v-for="feed in feeds">
           <td>{{feed.name}}</td>
-          <td>{{feed.lastImport && feed.lastImport.date}}</td>
+          <td>{{feed.lastImport && formatDate(feed.lastImport.date)}}</td>
           <td>{{feed.lastImport && feed.lastImport.count}}</td>
           <th><button @click.prevent="importFeed(feed.remoteId)">Import</button></th>
           <th><button @click.prevent="deleteFeed(feed._id)">Delete</button></th>
@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
   name: 'feed-list',
   props: [
@@ -60,6 +62,10 @@ export default {
     showMessage(message) {
       this.message = message;
       setTimeout(() => (this.message = ''), 5000);
+    },
+
+    formatDate(date) {
+      return moment(date).format('YYYY-DD-MM [at] hh:mm a');
     },
 
   },
