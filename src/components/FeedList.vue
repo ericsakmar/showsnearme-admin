@@ -9,7 +9,8 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>ID</th>
+          <th>Last Import</th>
+          <th>Count</th>
           <th></th>
           <th></th>
         </tr>
@@ -17,7 +18,8 @@
       <tbody>
         <tr v-for="feed in feeds">
           <td>{{feed.name}}</td>
-          <td>{{feed.remoteId}}</td>
+          <td>{{feed.lastImport && feed.lastImport.date}}</td>
+          <td>{{feed.lastImport && feed.lastImport.count}}</td>
           <th><button @click.prevent="importFeed(feed.remoteId)">Import</button></th>
           <th><button @click.prevent="deleteFeed(feed._id)">Delete</button></th>
         </tr>
@@ -33,6 +35,7 @@ export default {
   props: [
     'feeds',
     'onDelete',
+    'onImport',
   ],
 
   data() {
@@ -45,8 +48,7 @@ export default {
 
     importFeed(id) {
       fetch(`${process.env.API}/import/${id}`)
-        .then(res => res.json())
-        .then(res => this.showMessage(`Added ${res.added} shows`));
+        .then(() => this.onImport());
     },
 
     deleteFeed(id) {

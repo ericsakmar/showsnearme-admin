@@ -3,7 +3,8 @@
     <add-feed-form :onAdd="fetchFeeds"></add-feed-form>
     <feed-list 
       :feeds="this.feeds"
-      :onDelete="fetchFeeds"></feed-list>
+      :onDelete="fetchFeeds"
+      :onImport="fetchFeeds"></feed-list>
   </div>
 </template>
 
